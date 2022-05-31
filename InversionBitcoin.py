@@ -15,7 +15,7 @@ bitcoin_value_euros = float(input("Introduce el valor de bitcoin en euros: ")) #
 euros_value = bitcoinToEuros(bitcoin_amount, bitcoin_value_euros) #llamamos a la funcion(calcula valor de los bitcoins en euros)
 print("El valor de euros es: ", euros_value)
 
-#Probamos la funcion mediante interfaz grafica(tkinter)
+#Interfaz grafica(tkinter)
 #Metodo para calcular la multiplicacion
 def multiplicacion():
     multiplicacion=int(entrada1.get())*int(entrada2.get())
@@ -28,7 +28,7 @@ def cerrar():
 
 ventana = tk.Tk() #creamos la ventana
 ventana.title("Inversion en Bitcoin") #titulo de la ventana
-ventana.geometry("300x200") #dimensiones de la ventana
+ventana.geometry("400x300") #dimensiones de la ventana
 ventana.configure(background= 'dark turquoise') #color de fondo de la ventana
 var=tk.StringVar()
 
@@ -48,7 +48,7 @@ botonMultiplicacion.pack(side=tk.TOP) #posicionamiento del boton de multiplicaci
 res=tk.Label(ventana,textvariable=var,bg="plum",padx=5,pady=5,width=50) #etiqueta de resultado
 res.pack() #posicionamiento de la etiqueta de resultado
 
-botonCierra=tk.Button(ventana,text="Cerrar",fg="blue",command=cerrar) #boton de cerrar
+botonCierra=tk.Button(ventana,text="Cerrar",command=cerrar) #boton de cerrar
 botonCierra.pack(side=tk.TOP) #posicionamiento del boton de cerrar
 
 ventana.mainloop()
