@@ -23,5 +23,5 @@ with conexion:
     #    el Nivel de Riesgo del NFT como campo de texto
     #    el Vendedor que publica el anuncio como campo de texto
 
-    orden="CREATE TABLE Anuncio(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Riesgo TEXT, Vendedor TEXT)"
+    orden="CREATE TABLE Anuncios(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Riesgo TEXT, Vendedor TEXT)"
     cursor.execute(orden)
