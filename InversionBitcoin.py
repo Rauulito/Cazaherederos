@@ -42,11 +42,15 @@ e2.pack(padx=5,pady=4,ipadx=5,ipady=5,fill=tk.X) #posicionamiento de la etiqueta
 entrada2=tk.Entry(ventana) #caja de texto 2
 entrada2.pack(padx=5,pady=5,ipadx=5,ipady=5,fill=tk.X) #posicionamiento de la caja de texto 2
 
-botonMultiplicacion=tk.Button(ventana,text="Multiplicacion",command=multiplicacion) #boton de multiplicacion
+
+botonMultiplicacion=tk.Button(ventana,text="Calcular el valor de bitcoin en euros",command=multiplicacion) #boton de multiplicacion
 botonMultiplicacion.pack(side=tk.TOP) #posicionamiento del boton de multiplicacion
 
 res=tk.Label(ventana,textvariable=var,bg="plum",padx=5,pady=5,width=50) #etiqueta de resultado
 res.pack() #posicionamiento de la etiqueta de resultado
+
+
+
 
 botonCierra=tk.Button(ventana,text="Cerrar",command=cerrar) #boton de cerrar
 botonCierra.pack(side=tk.TOP) #posicionamiento del boton de cerrar
