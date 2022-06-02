@@ -57,10 +57,10 @@ if __name__ == '__main__':
     #Probamos la funcion con dos hilos simultaneos
     A1 = Anuncio("NFT_001", "Medio", "Vendedor01")
     A2 = Anuncio("NFT_002", "Bajo", "Vendedor01")
-
+    print("hola")
     t1 = Thread(target=publicar,args=(A1,))
     t2 = Thread(target=publicar,args=(A2,))
-
+    print("hola")
     t1.start()
     t2.start()
-
+    print("hola")

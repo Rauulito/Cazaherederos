@@ -22,6 +22,6 @@ def vertodo():
         # ... y se muestran en la salida estándar.
         print(linea)
 
-if __name__== '_main_':
+if __name__== '__main__':
 
     vertodo()
