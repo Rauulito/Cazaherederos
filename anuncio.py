@@ -52,15 +52,32 @@ def publicar(anuncio):
         # en la base. El método commit() valida las modificaciones
         conexion.commit ()
 
+# Mostramos los datos del anuncio insertado para ver cuando va ejecutandose cada hilo de publicar
+    print("Publicado anuncio del NFT:", anuncio.nombre, "- por el vendedor:", anuncio.vendedor)
+
+def consultar(riesgo):
+    # Objeto que representa la conexión a la base.
+    conexion = sqlite3.connect('anuncios.db')
+    # Uso de la palabra clave 'with' que cerrará automáticamente
+    # la conexión al final del bloque.
+    with conexion:
+        # Recuperación del cursor de la conexión.
+        cursor = conexion.cursor()
+        # ... ejecutamos un script SQL que consultaá los
+        # registros en la tabla con el riesgo indicado
+        cursor.execute("SELECT * FROM Anuncios WHERE Riesgo =?",
+                        (riesgo,))
+
+
 if __name__ == '__main__':
 
-    #Probamos la funcion con dos hilos simultaneos
+    #Probamos la funcion publicar con dos hilos simultaneos
     A1 = Anuncio("NFT_001", "Medio", "Vendedor01")
     A2 = Anuncio("NFT_002", "Bajo", "Vendedor01")
-    print("hola")
+
     t1 = Thread(target=publicar,args=(A1,))
     t2 = Thread(target=publicar,args=(A2,))
-    print("hola")
+
     t1.start()
     t2.start()
-    print("hola")
+
