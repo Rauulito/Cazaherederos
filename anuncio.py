@@ -18,5 +18,15 @@ def Nivel_Riesgo(nft):
     else:
         riesgo="Alto"
     return riesgo
+print(Nivel_Riesgo("nft"))#Prueba para  ver que funcione Nivel_Riesgo
 
-print(Nivel_Riesgo("luis"))#Prueba para que funcione Nivel_Riesgo
+#Hacemos una funcion predefinida para determinar si a un cliente le interesa un anuncio o no
+#Como no tenemos ningun criterio definido vamos a hacerlo de forma aleatoria(devolvera True si le interesa y false si no le interesa)
+def Interesa(nft, cliente):
+    numero=random.randint(1,2)
+    if numero==1:
+        interesa=True
+    else:
+        interesa=False
+    return interesa
+print(Interesa("nft", "cliente"))#Prueba para ver que funcione Interesa
