@@ -31,7 +31,7 @@ def Interesa(nft, cliente):
     else:
         interesa=False
     return interesa
-print(Interesa("nft", "cliente"))#Prueba para ver que funcione Interesa
+
 
 
 # Metodo para publicar un anuncio
@@ -55,7 +55,7 @@ def publicar(anuncio):
 # Mostramos los datos del anuncio insertado para ver cuando va ejecutandose cada hilo de publicar
     print("Publicado anuncio del NFT:", anuncio.nombre, "- por el vendedor:", anuncio.vendedor)
 
-def consultar(riesgo):
+def comprar(riesgo,comprador):
     # Objeto que representa la conexión a la base.
     conexion = sqlite3.connect('anuncios.db')
     # Uso de la palabra clave 'with' que cerrará automáticamente
@@ -69,11 +69,29 @@ def consultar(riesgo):
                         (riesgo,))
         # La solicitud se ejecuta y obtenemos la lista de los que cumplen el riesgo indicado
         lineas = cursor.fetchall()
-
-    # Se recorre esta lista de registros...
-    for linea in lineas:
-        # ... y se muestran en la salida estándar.
-        print(linea[0], linea[1])
+        Encuentra = "NO"
+        # Se recorre esta lista de registros...
+        for linea in lineas:
+            # ... y se muestran en la salida estándar.
+            print(linea[0], linea[1])
+            Interes = (Interesa(linea[1],comprador))
+            print (Interes)
+            if (Interes):
+                # Se le notifica al vendedor, aqui lo haremos mostrando un mensaje
+                print("***AVISO AL VENDEDOR:", linea[3])
+                print("***Le interesa el anuncio del NFT:", linea[1], "- al comprador:", comprador)
+                # ... ejecutamos un script SQL que borrará el anuncio que le interesa al comprador
+                cursor.execute("DELETE FROM Anuncios WHERE Id =?",
+                                (linea[0],))
+                # Las acciones de escritura no se realizan de forma inmediata
+                # en la base. El método commit() valida las modificaciones
+                conexion.commit ()
+                Encuentra = "SI"
+                break
+        if (Encuentra=="SI"):
+            print("Se elimina el anuncio del NFT:", linea, "- lo ha comprado:", comprador) #Mostramos el anuncio eliminado
+        else:
+            print("No se ha podido comprar NFT de riesgo:", riesgo, "solicitado por el comprado:", comprador) #Mostramos el nft que no se ha podido comprar
 
 if __name__ == '__main__':
 
