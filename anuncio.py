@@ -67,7 +67,13 @@ def consultar(riesgo):
         # registros en la tabla con el riesgo indicado
         cursor.execute("SELECT * FROM Anuncios WHERE Riesgo =?",
                         (riesgo,))
+        # La solicitud se ejecuta y obtenemos la lista de los que cumplen el riesgo indicado
+        lineas = cursor.fetchall()
 
+    # Se recorre esta lista de registros...
+    for linea in lineas:
+        # ... y se muestran en la salida estándar.
+        print(linea[0], linea[1])
 
 if __name__ == '__main__':
 
