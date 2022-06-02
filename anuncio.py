@@ -20,7 +20,7 @@ def Nivel_Riesgo(nft):
     else:
         riesgo="Alto"
     return riesgo
-print(Nivel_Riesgo("nft"))#Prueba para  ver que funcione Nivel_Riesgo
+
 
 #Hacemos una funcion predefinida para determinar si a un cliente le interesa un anuncio o no
 #Como no tenemos ningun criterio definido vamos a hacerlo de forma aleatoria(devolvera True si le interesa y false si no le interesa)
@@ -46,7 +46,7 @@ def publicar(anuncio):
         # ... ejecutamos un script SQL que insertará uno nuevo
         # registro en la tabla
         cursor.execute("INSERT INTO Anuncios (Nombre, Riesgo, Vendedor) VALUES(?,?,?)",
-                        (anuncio.nombre, anuncio.riesgo,
+                        (anuncio.nombre, Nivel_Riesgo(anuncio.nombre),
                         anuncio.vendedor))
         # Las acciones de escritura no se realizan de forma inmediata
         # en la base. El método commit() valida las modificaciones
@@ -78,8 +78,8 @@ def consultar(riesgo):
 if __name__ == '__main__':
 
     #Probamos la funcion publicar con dos hilos simultaneos
-    A1 = Anuncio("NFT_001", "Medio", "Vendedor01")
-    A2 = Anuncio("NFT_002", "Bajo", "Vendedor01")
+    A1 = Anuncio("NFT_001", "", "Vendedor01")
+    A2 = Anuncio("NFT_002", "", "Vendedor01")
 
     t1 = Thread(target=publicar,args=(A1,))
     t2 = Thread(target=publicar,args=(A2,))
