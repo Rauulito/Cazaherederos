@@ -87,7 +87,7 @@ def comprar(riesgo,comprador):
                 # en la base. El método commit() valida las modificaciones
                 conexion.commit ()
                 Encuentra = "SI"
-                break
+                break # Se sale del bucle porque ya ha encontrado uno que le interesa
         if (Encuentra=="SI"):
             print("Se elimina el anuncio del NFT:", linea, "- lo ha comprado:", comprador) #Mostramos el anuncio eliminado
         else:
