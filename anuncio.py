@@ -78,7 +78,7 @@ def comprar(riesgo,comprador):
             Interes = (Interesa(linea[1],comprador))
             if (Interes):
                 # Se le notifica al vendedor, aqui lo haremos mostrando un mensaje
-                print("*AVISO AL VENDEDOR:", linea[3], "*Le interesa el anuncio del NFT:", linea[1], "- al comprador:", comprador)
+                print("***AVISO AL VENDEDOR:", linea[3], "***Le interesa el anuncio del NFT:", linea[1], "- al comprador:", comprador)
                 # ... ejecutamos un script SQL que borrará el anuncio que le interesa al comprador
                 cursor.execute("DELETE FROM Anuncios WHERE Id =?",
                                 (linea[0],))
